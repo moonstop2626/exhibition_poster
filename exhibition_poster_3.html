@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EIM PMR Motor - Exhibition Poster</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #f0f0f0;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        /* Main Poster Container */
+        .poster {
+            width: 1750px;
+            height: 1400px;
+            max-width: 1750px;
+            max-height: 1400px;
+            margin: 0 auto;
+            background: linear-gradient(to bottom, #ffffff 0%, #f8fafb 100%);
+            padding: 0;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Decorative Background Elements */
+        .poster::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 8px;
+            background: linear-gradient(90deg, #54A89B 0%, #3d8a7f 50%, #54A89B 100%);
+            z-index: 10;
+        }
+
+        .bg-accent-1 {
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(84, 168, 155, 0.12) 0%, transparent 70%);
+            border-radius: 50%;
+            z-index: 0;
+        }
+
+        .bg-accent-2 {
+            position: absolute;
+            bottom: -80px;
+            left: -80px;
+            width: 350px;
+            height: 350px;
+            background: radial-gradient(circle, rgba(84, 168, 155, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            z-index: 0;
+        }
+
+        .content {
+            position: relative;
+            z-index: 2;
+            padding: 15px 35px;
+            flex: 1;
+            overflow: hidden;
+        }
+
+        /* Header Section */
+        .header-compact {
+            display: flex;
+            flex-direction: column;                 /* Stack vertically */
+            align-items: center;                    /* Center horizontally */
+            justify-content: center;                /* Center vertically */
+            gap: 8px;                               /* Small gap between logo and text */
+            margin-bottom: 12px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #54A89B;
+        }
+
+        .header-logo-left {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            order: -1;                              /* ← Logo comes FIRST (on top) */
+        }
+
+        .header-logo-left img {
+            height: 80px;                           /* Slightly smaller to save space */
+            max-width: 110px;
+            object-fit: contain;
+        }
+
+        .header-text {
+            text-align: center;
+            order: 0;                               /* ← Text comes SECOND (below) */
+        }
+
+        .header-text .main-heading {
+            font-size: 26px;
+            font-family: 'Playfair Display', serif;
+            font-weight: 750;
+            color: #1a1a1a;
+            margin: 0;
+            line-height: 1.05;
+        }
+
+        .main-heading {
+            font-family: 'Playfair Display', serif;
+            font-size: 3px;
+            font-weight: 600;
+            color: #1a1a1a;
+            line-height: 1.1;
+            margin-bottom: 5px;
+        }
+
+        .sub-heading {
+            font-size: 16px;
+            color: #54A89B;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+      .sections-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;              /* ← INCREASED from 15px (sections more spread) */
+            margin: 15px auto;      /* ← Keep centered */
+            padding: 0;             /* ← REDUCED from 40px 40px (less space around) */
+            width: 100%;
+            max-width: 1400px;
+            justify-items: stretch;
+        }
+
+        .section {
+            position: relative;
+            z-index: 2;
+            background: white;      /* ← ADD white background */
+            padding: 10px;          /* ← ADD padding inside each section */
+            border: 2px solid #e8e8e8;  /* ← ADD border */
+            border-radius: 6px;     /* ← ADD rounded corners */
+        }
+
+        .section-title-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .section-number {
+            flex-shrink: 0;
+            width: 38px;
+            height: 38px;
+            min-width: 38px;
+            min-height: 38px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #54A89B 0%, #3d8a7f 100%);
+            color: white;
+            border-radius: 50%;
+            font-weight: 800;
+            font-size: 18px;
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 0;
+        }
+
+        .section-content {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        .section-content ul {
+            list-style: none;
+            margin-top: 10px;
+        }
+
+        .section-content li {
+            margin-bottom: 10px;
+            padding-left: 50px;
+            position: relative;
+        }
+
+        .section-content li::before {
+            content: '▸';
+            position: absolute;
+            left: 20px;
+            color: #54A89B;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .highlight-stat {
+            display: inline-block;
+            background: linear-gradient(120deg, rgba(84, 168, 155, 0.15), rgba(84, 168, 155, 0.05));
+            padding: 3px 8px;
+            border-radius: 3px;
+            font-weight: 700;
+            color: #54A89B;
+        }
+
+        /* Full-Width Section */
+        .full-width-section {
+            background: white;
+            border: 2px solid #e8e8e8;
+            border-radius: 8px;
+            padding: 10px;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .full-width-section-title {
+            font-size: 19px;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .full-width-section-title::before {
+            content: '';
+            display: inline-block;
+            width: 5px;
+            height: 18px;
+            background: #54A89B;
+            border-radius: 3px;
+        }
+
+        /* Comparison Table */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        .comparison-table th {
+            background: linear-gradient(135deg, #54A89B 0%, #3d8a7f 100%);
+            color: white;
+            padding: 10px 10px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 15px;
+            border: none;
+        }
+
+        .comparison-table td {
+            padding: 10px 10px;
+            border-bottom: 1px solid #e8e8e8;
+            border-bottom: 1px solid #e8e8e8;
+            font-size: 15px;
+            text-align: center; 
+        }
+
+        .comparison-table th:nth-child(1) {
+    width: 25%;        /* Feature column */
+}
+
+.comparison-table th:nth-child(2) {
+    width: 30%;        /* Conventional Motor (SMALLER) */
+}
+
+.comparison-table th:nth-child(3) {
+    width: 45%;        /* EIM PMR Motor (FEATURED/LARGER) */
+}
+
+.comparison-table td:nth-child(1) {
+    width: 25%;
+}
+
+.comparison-table td:nth-child(2) {
+    width: 30%;        /* Smaller column */
+}
+
+.comparison-table td:nth-child(3) {
+    width: 45%;        /* Larger column - EIM featured */
+}
+
+        .comparison-table tr:nth-child(even) {
+            background: rgba(84, 168, 155, 0.04);
+        }
+
+        .comparison-table tbody tr:hover {
+            background: rgba(84, 168, 155, 0.08);
+            transition: background 0.3s ease;
+        }
+
+        .feature-label {
+            font-weight: 600;
+            color: #333;
+            text-align: left; 
+        }
+        .comparison-table td:first-child {
+            text-align: left;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .conventional {
+            color: #d9534f;
+            text-align: center;  
+        }
+
+        .eimpro {
+            color: #54A89B;
+            font-weight: 700;
+            text-align: center;  
+        }
+
+        /* Key Metrics Row */
+        .metrics-row {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            background: linear-gradient(135deg, #54A89B 0%, #3d8a7f 100%);
+            padding: 10px 20px;
+            border-radius: 8px;
+            margin-bottom: 5px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .metric-box {
+            text-align: center;
+            color: white;
+        }
+
+        .metric-value {
+            font-family: 'Oswald', serif;
+            font-size: 35px;
+            font-weight: 900;
+            line-height: 1;
+            margin-bottom: 5px;
+        }
+
+        .metric-label {
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.95;
+        }
+
+        /* FOOTER - PROPERLY ORGANIZED */
+        .footer {
+            background: linear-gradient(135deg, #54A89B 0%, #3d8a7f 100%);
+            color: white;
+            padding: 18px 50px;
+            position: relative;
+            z-index: 2;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 40px;
+            flex-shrink: 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Left: Logo */
+        .footer-left {
+            flex: 0 0 auto;
+            text-align: center;
+        }
+
+        .footer-logo img {
+            height: 65px;
+            max-width: 180px;
+            object-fit: contain;
+        }
+
+        /* Center: Company Details */
+        .footer-center {
+            flex: 1;
+        }
+
+        .footer-company-name {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .footer-company-info {
+            font-size: 15px;
+            line-height: 1.5;
+            opacity: 0.95;
+        }
+
+        .footer-company-info p {
+            margin: 0;
+            display: inline;
+        }
+
+        .footer-company-info p:not(:last-child)::after {
+            content: ' | ';
+            margin: 0 8px;
+        }
+
+        /* Right: Tagline */
+        .footer-right {
+            flex: 0 0 auto;
+            text-align: right;
+        }
+
+        .footer-tagline-text {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .footer-tagline-subtitle {
+            font-size: 15px;
+            opacity: 0.85;
+            font-style: italic;
+        }
+
+        /* Print Styles */
+        @media print {
+            body {
+                padding: 0;
+                background: white;
+            }
+            .poster {
+                box-shadow: none;
+                max-width: 100%;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .content {
+                padding: 40px 50px;
+            }
+
+            .main-heading {
+                font-size: 38px;
+            }
+
+            .sections-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .metrics-row {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+                padding: 20px 20px;
+            }
+
+            .footer {
+                flex-direction: column;
+                text-align: center;
+                gap: 10px;
+            }
+
+            .footer-right {
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .content {
+                padding: 30px 25px;
+            }
+
+            .main-heading {
+                font-size: 17px;
+            }
+
+            .section-title {
+                font-size: 18px;
+            }
+
+            .section-content {
+                font-size: 14px;
+            }
+
+            .full-width-section {
+                padding: 25px 20px;
+            }
+
+            .full-width-section-title {
+                font-size: 20px;
+            }
+
+            .metrics-row {
+                grid-template-columns: 1fr;
+                padding: 20px 15px;
+            }
+
+            .metric-value {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="poster">
+        <div class="bg-accent-1"></div>
+        <div class="bg-accent-2"></div>
+
+        <div class="content">
+            <!-- Header -->
+            <div class="header-compact">
+                <div class="header-logo-left">
+                    <img src="eim_logo.jpeg" alt="EIM Logo">
+                </div>
+                <div class="header-text">
+                    <h1 class="main-heading">Permanent Magnetic Motor</h1>
+                    
+                </div>
+            </div>
+
+            <!-- Key Metrics -->
+            <div class="metrics-row">
+                <div class="metric-box">
+                    <div class="metric-value">61.5%</div>
+                    <div class="metric-label">Energy Savings</div>
+                </div>
+                <div class="metric-box">
+                    <div class="metric-value">1.1</div>
+                    <div class="metric-label">Year Payback</div>
+                </div>
+                <div class="metric-box">
+                    <div class="metric-value">90.6%</div>
+                    <div class="metric-label">Annual ROI</div>
+                </div>
+                <div class="metric-box">
+                    <div class="metric-value">19.1°C</div>
+                    <div class="metric-label">Cooler Operation</div>
+                </div>
+            </div>
+
+            <!-- 5 Sections Grid -->
+            <div class="sections-grid">
+                <!-- Section 1 -->
+                <div class="section">
+                <div class="section-title-wrapper">
+                    <div class="section-number">1</div>
+                    <div class="section-title">Maximum Efficiency Gains</div>
+                </div>
+                    <div class="section-content">
+                        <ul>
+                            <li><span class="highlight-stat">Up to 61.5%</span> Energy Savings: In weaving mill applications, replacing conventional motors reduced power consumption from 1.87 kW to 1.15 kW</li>
+                            <li><span class="highlight-stat">12.5%</span> Improvement in Blower Systems: Nearly double the 6.6% saving from standard high-efficiency motors</li>
+                            <li><strong>IE4 Efficiency (95%)</strong> vs conventional motors at only 88.4%</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Section 2 -->
+                <div class="section">
+                    <div class="section-title-wrapper">
+                    <div class="section-number">2</div>
+                    <div class="section-title">Optimized Thermal & Power Performance</div>
+                    </div>
+                    <div class="section-content">
+                        <ul>
+                            <li><span class="highlight-stat">19.1°C</span> Temperature Reduction: Motor body from 61.8°C to 42.7°C</li>
+                            <li><strong>1500 RPM @ 4.1A</strong> vs conventional 1420 RPM @ 6.0A</li>
+                            <li><strong>High Power Factor:</strong> 0.87 to 0.95 ensuring better power quality</li>
+                            <li>Lower operating heat extends motor lifespan significantly</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Section 3 -->
+                <div class="section">
+                    <div class="section-title-wrapper">
+                    <div class="section-number">3</div>
+                    <div class="section-title">Intelligent Control System</div>
+                    </div>
+                    <div class="section-content">
+                        <ul>
+                            <li><strong>Automatic Frequency Modulation:</strong> Uses Dissolved Oxygen (DO) sensors for real-time data capture</li>
+                            <li><strong>Demand-Based Scaling:</strong> Motor frequency automatically ramps between 50Hz–80Hz</li>
+                            <li>High DO readings reduce motor RPM to save energy</li>
+                            <li>Low readings increase performance to maintain process stability</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Section 4 -->
+                <div class="section">
+                    <div class="section-title-wrapper">
+                    <div class="section-number">4</div>
+                    <div class="section-title">Sustainable Performance with Proven ROI</div>
+                    </div>
+                    <div class="section-content">
+                        <ul>
+                            <li><span class="highlight-stat">1.1 Year</span> Simple Payback Period</li>
+                            <li><span class="highlight-stat">90.6%</span> Return on Investment (ROI) per year</li>
+                            <li><strong>4,814.9 kg CO₂e</strong> reduction per motor annually</li>
+                            <li>Significantly lower maintenance costs due to cooler operation</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Comparison Table Section -->
+            <div class="full-width-section">
+                <div class="full-width-section-title">Performance Comparison - 2.2kW Motor</div>
+                
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Feature</th>
+                            <th>Conventional Induction Motor</th>
+                            <th>EIM PMR Motor</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="feature-label">Efficiency Class</td>
+                            <td class="conventional">IE2 / EFF2 (88.4%)</td>
+                            <td class="eimpro">IE4 (95%)</td>
+                        </tr>
+                        <tr>
+                            <td class="feature-label">Current (Amps)</td>
+                            <td class="conventional">6.0 A</td>
+                            <td class="eimpro">4.1 A</td>
+                        </tr>
+                        <tr>
+                            <td class="feature-label">Shaft Speed</td>
+                            <td class="conventional">1420 RPM</td>
+                            <td class="eimpro">1500 RPM</td>
+                        </tr>
+                        <tr>
+                            <td class="feature-label">Body Temperature</td>
+                            <td class="conventional">~61.8°C</td>
+                            <td class="eimpro">~42.7°C</td>
+                        </tr>
+                        <tr>
+                            <td class="feature-label">Power Factor</td>
+                            <td class="conventional">0.64 (Low)</td>
+                            <td class="eimpro">0.87 - 0.95 (High)</td>
+                        </tr>
+                        <tr>
+                            <td class="feature-label">Power Consumption</td>
+                            <td class="conventional">1.87 kW</td>
+                            <td class="eimpro">1.15 kW</td>
+                        </tr>
+                        <tr>
+                            <td class="feature-label">Heat Loss</td>
+                            <td class="conventional">Higher</td>
+                            <td class="eimpro">Lower (19.1°C cooler)</td>
+                        </tr>
+                        <tr>
+                            <td class="feature-label">Maintenance Costs</td>
+                            <td class="conventional">Higher</td>
+                            <td class="eimpro">Significantly Lower</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- FOOTER - ORGANIZED LAYOUT -->
+        <div class="footer">
+            <!-- LEFT: Logo -->
+            <div class="footer-left">
+                <div class="footer-logo">
+                    <img src="long_logo.png" alt="P-Tech Logo">
+                </div>
+            </div>
+
+            <!-- CENTER: Company Details -->
+            <div class="footer-center">
+                <div class="footer-company-name">P-TECH ENGINEERING SDN BHD</div>
+                <div class="footer-company-info">
+                    <p>No. 3 & 5, Jalan BP 5/4, Bandar Bukit Puchong, 47120 Puchong, Selangor</p>
+                    <br>
+                    <p><strong>Tel:</strong> +603-8060 0801/2/3</p>
+                    <p><strong>Web:</strong> www.p-tech.com.my</p>
+                    <p><strong>Email:</strong> enquiry@p-tech.com.my</p>
+                </div>
+            </div>
+
+            <!-- RIGHT: Tagline -->
+            <div class="footer-right">
+                <div class="footer-tagline-text">Transforming Industrial Energy Efficiency</div>
+                <div class="footer-tagline-subtitle">Proven Results • Trusted Partner • Sustainable Solutions</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

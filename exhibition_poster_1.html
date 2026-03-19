@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>P-Tech Engineering – Our Services Poster</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #0a0a0a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 24px;
+    font-family: 'Barlow', sans-serif;
+  }
+
+  /* 760×760px screen = 1900×1900mm print */
+  .poster {
+    width: 760px;
+    height: 760px;
+    background: linear-gradient(155deg, #1a8082 0%, #0d6265 45%, #084547 100%);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    box-shadow: 0 30px 100px rgba(0,0,0,0.8);
+    position: relative;
+  }
+
+  .poster::before {
+    content: '';
+    position: absolute;
+    top: -100px; right: -100px;
+    width: 360px; height: 360px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(58,175,178,0.28) 0%, transparent 65%);
+    pointer-events: none; z-index: 1;
+  }
+  .poster::after {
+    content: '';
+    position: absolute;
+    bottom: -60px; left: -60px;
+    width: 260px; height: 260px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0,0,0,0.28) 0%, transparent 70%);
+    pointer-events: none; z-index: 1;
+  }
+
+  /* ── HEADER ── */
+  .header {
+    position: relative; z-index: 5;
+    padding: 18px 28px 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(255,255,255,0.14);
+    flex-shrink: 0;
+  }
+
+  .logo-block {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .logo-block img {
+    height: 60px;
+    width: auto;
+    display: block;
+    /* invert to white so it reads on teal - logo is teal/dark on transparent */
+    /* filter: brightness(0) invert(1); */
+    opacity: 0.92;
+  }
+
+  .logo-text .name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: white;
+    line-height: 1.2;
+  }
+  .logo-text .reg {
+    font-size: 9.5px;
+    font-weight: 300;
+    letter-spacing: 0.09em;
+    color: rgba(255,255,255,0.55);
+    margin-top: 2px;
+  }
+
+  .header-right {
+    text-align: right;
+    color: rgba(255,255,255,0.65);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11.5px;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    line-height: 1.75;
+  }
+
+  /* ── TITLE ── */
+  .title-band {
+    position: relative; z-index: 5;
+    text-align: center;
+    padding: 12px 28px 9px;
+    flex-shrink: 0;
+  }
+
+  .title-kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 5px;
+  }
+  .kicker-line { width: 28px; height: 1.5px; background: rgba(255,255,255,0.32); }
+  .kicker-text {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px; font-weight: 600;
+    letter-spacing: 0.30em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.55);
+  }
+  .title-main {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 52px; font-weight: 800;
+    text-transform: uppercase;
+    color: white;
+    letter-spacing: 0.06em;
+    line-height: 1;
+    text-shadow: 0 4px 22px rgba(0,0,0,0.28);
+  }
+
+  /* ── CARD GRID ── */
+  .grid-wrap {
+    position: relative; z-index: 5;
+    flex: 1;
+    padding: 2px 18px 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-height: 0;
+  }
+
+  .card-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    flex: 1;
+  }
+
+  .card {
+    background: rgba(255,255,255,0.09);
+    border-radius: 9px;
+    border: 1px solid rgba(255,255,255,0.17);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 13px 12px 15px;
+    position: relative;
+    overflow: hidden;
+  }
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 12%; right: 12%;
+    height: 1.5px;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.42), transparent);
+  }
+
+  .icon-circle {
+    width: 48px; height: 48px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.15);
+    border: 1.5px solid rgba(255,255,255,0.30);
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 9px; flex-shrink: 0;
+  }
+  .icon-circle svg {
+    width: 22px; height: 22px;
+    stroke: white; fill: none;
+    stroke-width: 1.75;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .card-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 15px; font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: white;
+    line-height: 1.2;
+    margin-bottom: 5px;
+  }
+  .card-desc {
+    font-size: 10.5px; font-weight: 400;
+    color: rgba(255,255,255,0.72);
+    line-height: 1.45;
+    max-width: 160px;
+  }
+
+
+  /* ── FOOTER ── */
+  .footer {
+    position: relative; z-index: 5;
+    border-top: 1px solid rgba(255,255,255,0.14);
+    padding: 10px 22px 12px;
+    padding-left: 40px;   
+
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-shrink: 0;
+    background: rgba(0,0,0,0.20);
+  }
+
+  .footer-logo img {
+    height: 44px;
+    width: auto;
+    display: block;
+    flex-shrink: 0;
+  }
+
+  .vdivider {
+    width: 1px;
+    height: 40px;
+    background: rgba(255,255,255,0.18);
+    flex-shrink: 0;
+  }
+
+  .footer-info {
+    display: flex;
+    flex: 1;
+    align-items: stretch;
+  }
+
+  .footer-col {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 0 14px;
+    border-right: 1px solid rgba(255,255,255,0.14);
+    flex: 1;
+  }
+  .footer-col:first-child { padding-left: 0; }
+  .footer-col:last-child { border-right: none; }
+
+  .footer-col .flabel {
+    font-size: 7.5px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.38);
+    margin-bottom: 2px;
+  }
+  .footer-col span {
+    font-size: 9px;
+    color: rgba(255,255,255,0.70);
+    letter-spacing: 0.03em;
+    line-height: 1.6;
+  }
+  .footer-col .highlight {
+    color: rgba(255,255,255,0.92);
+    font-weight: 600;
+    font-size: 9.5px;
+  }
+
+</style>
+</head>
+<body>
+<div class="poster">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="logo-block">
+      <img src="long_logo.png" alt="P-Tech Logo">
+      <div class="logo-text">
+        <div class="name">P-Tech Engineering Sdn. Bhd.</div>
+        <div class="reg">Company No: 282695-K</div>
+      </div>
+    </div>
+    <div class="header-right">
+      Mechanical Equipment<br>
+      &amp; Pumping Solutions<br>
+      For Treatment Plants
+    </div>
+  </div>
+
+  <!-- TITLE -->
+  <div class="title-band">
+    <div class="title-kicker">
+      <div class="kicker-line"></div>
+      <div class="kicker-text">What We Offer</div>
+      <div class="kicker-line"></div>
+    </div>
+    <div class="title-main">Our Services</div>
+  </div>
+
+  <!-- GRID -->
+  <div class="grid-wrap">
+    <!-- Row 1 -->
+    <div class="card-row">
+      <div class="card">
+        <div class="icon-circle">
+          <svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
+        </div>
+        <div class="card-title">Repair &amp; Maintenance</div>
+        <div class="card-desc">Scheduled &amp; corrective maintenance for all equipment</div>
+      </div>
+      <div class="card">
+        <div class="icon-circle">
+          <svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 5v4h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+        </div>
+        <div class="card-title">On-Site Service</div>
+        <div class="card-desc">Field service support at your project location</div>
+      </div>
+      <div class="card">
+        <div class="icon-circle">
+          <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        </div>
+        <div class="card-title">After-Sales Service</div>
+        <div class="card-desc">Dedicated support after every project delivery</div>
+      </div>
+    </div>
+
+    <!-- Row 2 -->
+    <div class="card-row">
+      <div class="card">
+        <div class="icon-circle">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/></svg>
+        </div>
+        <div class="card-title">Testing &amp; Commissioning</div>
+        <div class="card-desc">Full system testing and verification before handover</div>
+      </div>
+      <div class="card">
+        <div class="icon-circle">
+          <svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>
+        </div>
+        <div class="card-title">Site Installation &amp; Supervision</div>
+        <div class="card-desc">Professional assembly &amp; installation oversight</div>
+      </div>
+      <div class="card">
+        <div class="icon-circle">
+          <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        </div>
+        <div class="card-title">Maintenance Contracts</div>
+        <div class="card-desc">Flexible long-term service agreements</div>
+      </div>
+    </div>
+
+    <!-- Row 3 -->
+    <div class="card-row">
+      <div class="card">
+        <div class="icon-circle">
+          <svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        </div>
+        <div class="card-title">Energy Efficiency Solutions</div>
+        <div class="card-desc">Optimising pump and system energy performance</div>
+      </div>
+      <div class="card">
+        <div class="icon-circle">
+          <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+        </div>
+        <div class="card-title">Spare Part Provision</div>
+        <div class="card-desc">Genuine parts supply for all brands</div>
+      </div>
+      <div class="card">
+        <div class="icon-circle">
+          <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+        </div>
+        <div class="card-title">Engineering Support</div>
+        <div class="card-desc">Technical consultation &amp; expert guidance</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-logo">
+      <img src="long_logo.png" alt="P-Tech Logo">
+    </div>
+    <div class="vdivider"></div>
+    <div class="footer-info">
+      <div class="footer-col">
+        <span class="flabel">Address</span>
+        <span>No. 3 &amp; 5, Jalan BP 5/4,</span>
+        <span>Bandar Bukit Puchong,</span>
+        <span>47120 Puchong, Selangor, Malaysia.</span>
+      </div>
+      <div class="footer-col">
+        <span class="flabel">Telephone</span>
+        <span>+603-8060 0801 / 0802 / 0803</span>
+        <span class="flabel" style="margin-top:5px;">Fax</span>
+        <span>+603-8060 0231</span>
+      </div>
+      <div class="footer-col">
+        <span class="flabel">Website</span>
+        <span class="highlight">www.p-tech.com.my</span>
+        <span class="flabel" style="margin-top:5px;">Email</span>
+        <span class="highlight">enquiry@p-tech.com.my</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
